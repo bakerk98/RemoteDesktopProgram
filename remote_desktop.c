@@ -24,15 +24,17 @@ int main(int argc, char **argv){
 
   grid = gtk_grid_new();
   gtk_container_add(GTK_CONTAINER(window), grid);
+  gtk_grid_set_row_homogeneous(GTK_GRID(grid),TRUE);
+  gtk_grid_set_column_homogeneous(GTK_GRID(grid),TRUE);
 
   close_window_please=gtk_button_new_with_label("Exit");
   g_signal_connect(close_window_please, "clicked", G_CALLBACK(gtk_main_quit), NULL);
-  gtk_grid_attach(GTK_GRID(grid), close_window_please, 0,0,1,1);
+  gtk_grid_attach(GTK_GRID(grid), close_window_please, 0,0,300,300);
 
   minimize=gtk_button_new_with_label("Minimize this window and begin Remote Desktopping...");
   g_signal_connect(minimize, "clicked", G_CALLBACK(minimize_the_window_mommy), NULL);
-  gtk_grid_attach(GTK_GRID(grid), minimize, 1,0,1,1);
-
+  gtk_grid_attach(GTK_GRID(grid), minimize,300,0,300,300);
+  
   gtk_widget_show_all(window);
   gtk_main();
 
