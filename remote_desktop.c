@@ -2,16 +2,16 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
-/* this program makes a window that should be used with Steam */
+/* this program makes a window that can be used with Steam */
 /* Remote Desktop to use the desktop of a host computer while afk from that host computer */
 
-/* this is my first venture into gtk, please excuse any poor craftsmenship, but note i had fun making this */
+/* this is my first venture into gtk, i had fun making this */
 
 static GtkWidget *close_window_please;
 static GtkWidget *minimize;
 static GtkWidget *window;
 
-void minimize_the_window_mommy(GtkWidget *minimize, gpointer data){
+void minimize_the_window(GtkWidget *minimize, gpointer data){
   gtk_window_iconify(window);
 }
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv){
   gtk_grid_attach(GTK_GRID(grid), close_window_please, 0,0,300,300);
 
   minimize=gtk_button_new_with_label("Minimize this window and begin Remote Desktopping...");
-  g_signal_connect(minimize, "clicked", G_CALLBACK(minimize_the_window_mommy), NULL);
+  g_signal_connect(minimize, "clicked", G_CALLBACK(minimize_the_window), NULL);
   gtk_grid_attach(GTK_GRID(grid), minimize,300,0,300,300);
   
   gtk_widget_show_all(window);
